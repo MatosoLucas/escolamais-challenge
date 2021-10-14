@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import { fetchTodos } from '../services/api'
 
 type QuizParams = {
@@ -13,13 +12,6 @@ interface Todo {
   title: string,
   completed: boolean
 }
-
-const CreateTodo = styled.div`
-  input {
-    margin: 30px;
-    border: 1px solid #000;
-  }
-`
 
 export default function ToDosContainer() {
   let { id } = useParams<QuizParams>();
