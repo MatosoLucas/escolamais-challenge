@@ -1,29 +1,10 @@
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 import { useUsers } from "../context/usersContext";
 
-const FlexContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-`
-
-const UserInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 250px;
-  width: 100%;
-  border: 1px solid #000;
-  margin: 10px;
-  span {
-    margin: 15px;
-  }
-`
 
 export default function UserContainer() {
   const { users } = useUsers();
-  
+
   let history = useHistory();
 
   const ShowTodos = (id: string) => {
@@ -31,12 +12,17 @@ export default function UserContainer() {
   }
 
   return (
-    <FlexContainer>
-      {users.map(user => (
-        <UserInfo key={user.id} onClick={() => ShowTodos(user.id)}>
-          <span>{user.name}</span> <span>{user.username}</span> <span>{user.email}</span>
-        </UserInfo>
-      ))}
-    </FlexContainer>
+    <div className="min-h-screen h-full bg-gray-200">
+      <div className="flex w-full justify-center bg-gray-300">
+        <span className="text-4xl my-4">User's List</span>
+      </div>
+      <div className="flex flex-wrap content-start justify-center mt-10">
+        {users.map(user => (
+          <div className="flex flex-col m-4 max-w-xs w-full h-40 bg-white rounded-md shadow-lg justify-center items-center cursor-pointer" key={user.id} onClick={() => ShowTodos(user.id)}>
+            <span className="ml-1 my-2.5">Name: {user.name}</span> <span className="ml-1 my-2.5">User Name: {user.username}</span> <span className="ml-1 my-2.5">Email: {user.email}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
