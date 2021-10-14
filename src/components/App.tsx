@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <UsersContainer />
-          </Route>
+          </Route>  
           <Route path="/:id" children={<ToDosContainer />} />
         </Switch>
       </Router>
