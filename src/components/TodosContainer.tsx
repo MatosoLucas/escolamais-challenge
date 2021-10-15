@@ -82,8 +82,13 @@ export default function ToDosContainer() {
         {todos.map(todo => (
           <div className="flex flex-col m-4 max-w-xs w-full h-52 p-4 bg-white rounded-md shadow-lg" key={todo.id}>
             <p className="text-xl mb-4 text-center break-words">{todo.title}</p>
-            {todo.completed ? <span className="mt-auto text-center text-green-700">Status: Completed</span> : <span className="mt-auto text-center text-yellow-400">Status: Pending</span>}
-
+            {
+              todo.completed
+                ?
+                <span className="mt-auto text-center text-green-700">Status: Completed</span>
+                :
+                <span className="mt-auto text-center text-yellow-400">Status: Pending</span>
+            }
             <button className="bg-gray-200 w-1/2 active:bg-gray-400 mx-auto mt-2 rounded-md" onClick={() => PostStatus(todo)}>Change Status</button>
           </div>
         ))}
